@@ -26,3 +26,11 @@ class Users:
         query = "INSERT INTO user ( first_name , last_name , email , created_at, updated_at ) VALUES ( %(fname)s , %(lname)s , %(email)s , NOW() , NOW() );"
         # data is a dictionary that will be passed into the save method from server.py
         return connectToMySQL('users').query_db( query, data)
+    @classmethod
+    def remove(cls, num ):
+        query = f"DELETE FROM `users`.`user` WHERE (`id` = {num});"
+        return connectToMySQL('users').query_db( query)
+    @classmethod
+    def update(cls, data):
+        query= "UPDATE `users`.`user` SET `first_name` = %(fname)s, `last_name` = %(lname)s, `email` = %(email)s WHERE (`id` =  %(id)s);"
+        return connectToMySQL('users').query_db( query,data)

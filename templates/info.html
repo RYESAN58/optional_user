@@ -16,18 +16,24 @@
             <th scope="col">Last Name</th>
             <th scope="col">Email</th>
             <th scope="col">Created At</th>
+            <th scope="col">Actions</th>
             </tr>
         </thead>
         <tbody>
             {% for i in all_users: %}
                 <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">{{i.id}}</th>
                     <td>{{i.first_name}}</td>
                     <td>{{i.lastname}}</td>
                     <td>{{i.email}}</td>
                     <td>{{i.created_at}}</td>
+                    <td>
+                        <a href="http://127.0.0.1:5000/show.html/{{i.id}}">show</a>
+                        <a href="http://127.0.0.1:5000//update.html/{{i.id}}">edit</a>
+                        <a href="http://127.0.0.1:5000/delete/{{i.id}}">delete</a>
+                    </td>
+            {%endfor%}
                 </tr>
-            {% endfor %}
         </tbody>
     </table>
 </body>
